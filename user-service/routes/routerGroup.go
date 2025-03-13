@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"bookstore-framework/internal/users/api"
+	"bookstore-framework/internal/api"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

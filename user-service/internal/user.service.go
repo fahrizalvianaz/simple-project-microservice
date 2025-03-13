@@ -1,7 +1,7 @@
 package users
 
 import (
-	"bookstore-framework/internal/users/api/dto"
+	"bookstore-framework/internal/api/dto"
 	"bookstore-framework/pkg"
 	"context"
 	"errors"

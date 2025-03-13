@@ -1,11 +1,11 @@
 package api
 
 import (
-	"bookstore-framework/internal/users"
-	"bookstore-framework/internal/users/api/dto"
-	"bookstore-framework/pkg"
+	users "bookstore-framework/internal"
+	"bookstore-framework/internal/api/dto"
 	"net/http"
 
+	genericResponse "github.com/fahrizalvianaz/shared-response/httputil"
 	"github.com/gin-gonic/gin"
 )
 
@@ -32,17 +32,17 @@ func NewUserHandler(userService users.UserService) *UserHandler {
 func (h *UserHandler) RegisterHandler(ctx *gin.Context) {
 	var req dto.RegisterRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
-		pkg.BadRequestResponse(ctx, "Invalid Request format", err.Error())
+		genericResponse.BadRequestResponse(ctx, "Invalid Request format", err.Error())
 		return
 	}
 
 	response, err := h.userService.Register(ctx.Request.Context(), req)
 	if err != nil {
-		pkg.ErrorResponse(ctx, http.StatusBadRequest, err.Error(), nil)
+		genericResponse.ErrorResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
-	pkg.CreatedResponse(ctx, "User registered successfully", response)
+	genericResponse.CreatedResponse(ctx, "User registered successfully", response)
 }
 
 // LoginHandler godoc
@@ -58,17 +58,17 @@ func (h *UserHandler) RegisterHandler(ctx *gin.Context) {
 func (h *UserHandler) LoginHandler(ctx *gin.Context) {
 	var req dto.LoginRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
-		pkg.BadRequestResponse(ctx, "Invalid Request format", err.Error())
+		genericResponse.BadRequestResponse(ctx, "Invalid Request format", err.Error())
 		return
 	}
 
 	response, err := h.userService.Login(ctx.Request.Context(), req)
 	if err != nil {
-		pkg.ErrorResponse(ctx, http.StatusBadRequest, err.Error(), nil)
+		genericResponse.ErrorResponse(ctx, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
 
-	pkg.OkResponse(ctx, "Login Successfully", response)
+	genericResponse.OkResponse(ctx, "Login Successfully", response)
 }
 
 // LoginHandler godoc
@@ -84,15 +84,15 @@ func (h *UserHandler) LoginHandler(ctx *gin.Context) {
 func (h *UserHandler) GetProfile(ctx *gin.Context) {
 	userID, exist := ctx.Get("userID")
 	if !exist {
-		pkg.ErrorResponse(ctx, http.StatusUnauthorized, "User not found", nil)
+		genericResponse.ErrorResponse(ctx, http.StatusUnauthorized, "User not found", nil)
 		return
 	}
 
 	profile, err := h.userService.GetProfile(ctx, userID.(uint))
 	if err != nil {
-		pkg.ErrorResponse(ctx, http.StatusInternalServerError, "Failed to retrieve profile", err.Error())
+		genericResponse.ErrorResponse(ctx, http.StatusInternalServerError, "Failed to retrieve profile", err.Error())
 		return
 	}
 
-	pkg.OkResponse(ctx, "Profile retrieve successfully", profile)
+	genericResponse.OkResponse(ctx, "Profile retrieve successfully", profile)
 }

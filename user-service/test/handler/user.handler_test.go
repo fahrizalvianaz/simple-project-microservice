@@ -1,9 +1,8 @@
 package handler_test
 
 import (
-	"bookstore-framework/internal/users/api"
-	"bookstore-framework/internal/users/api/dto"
-	"bookstore-framework/pkg"
+	"bookstore-framework/internal/api"
+	"bookstore-framework/internal/api/dto"
 	mocks "bookstore-framework/test/mock"
 	"bytes"
 	"encoding/json"
@@ -13,6 +12,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/fahrizalvianaz/shared-response/httputil"
 	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
@@ -58,7 +58,7 @@ func TestUserHandler_Success(t *testing.T) {
 
 		assert.Equal(t, http.StatusCreated, w.Code)
 
-		var response pkg.Response
+		var response httputil.Response
 		err = json.Unmarshal(w.Body.Bytes(), &response)
 		require.NoError(t, err)
 
@@ -100,7 +100,7 @@ func TestUserHandler_Success(t *testing.T) {
 
 		assert.Equal(t, http.StatusOK, w.Code)
 
-		var response pkg.Response
+		var response httputil.Response
 		err = json.Unmarshal(w.Body.Bytes(), &response)
 		require.NoError(t, err)
 
@@ -138,7 +138,7 @@ func TestUserHandler_Success(t *testing.T) {
 
 		assert.Equal(t, http.StatusOK, w.Code)
 
-		var response pkg.Response
+		var response httputil.Response
 		err := json.Unmarshal(w.Body.Bytes(), &response)
 		require.NoError(t, err)
 
@@ -186,7 +186,7 @@ func TestUserHandler_Error(t *testing.T) {
 
 		assert.Equal(t, http.StatusBadRequest, w.Code)
 
-		var response pkg.Response
+		var response httputil.Response
 		err = json.Unmarshal(w.Body.Bytes(), &response)
 		require.NoError(t, err)
 
@@ -226,7 +226,7 @@ func TestUserHandler_Error(t *testing.T) {
 
 		assert.Equal(t, http.StatusBadRequest, w.Code)
 
-		var response pkg.Response
+		var response httputil.Response
 		err = json.Unmarshal(w.Body.Bytes(), &response)
 		require.NoError(t, err)
 
@@ -254,7 +254,7 @@ func TestUserHandler_Error(t *testing.T) {
 
 		assert.Equal(t, http.StatusBadRequest, w.Code)
 
-		var response pkg.Response
+		var response httputil.Response
 		err = json.Unmarshal(w.Body.Bytes(), &response)
 		require.NoError(t, err)
 
@@ -293,7 +293,7 @@ func TestUserHandler_Error(t *testing.T) {
 
 		assert.Equal(t, http.StatusBadRequest, w.Code)
 
-		var response pkg.Response
+		var response httputil.Response
 		err = json.Unmarshal(w.Body.Bytes(), &response)
 		require.NoError(t, err)
 
@@ -314,7 +314,7 @@ func TestUserHandler_Error(t *testing.T) {
 
 		assert.Equal(t, http.StatusUnauthorized, w.Code)
 
-		var response pkg.Response
+		var response httputil.Response
 		err := json.Unmarshal(w.Body.Bytes(), &response)
 		require.NoError(t, err)
 
@@ -338,7 +338,7 @@ func TestUserHandler_Error(t *testing.T) {
 
 		assert.Equal(t, http.StatusInternalServerError, w.Code)
 
-		var response pkg.Response
+		var response httputil.Response
 		err := json.Unmarshal(w.Body.Bytes(), &response)
 		require.NoError(t, err)
 

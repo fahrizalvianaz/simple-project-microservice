@@ -5,7 +5,7 @@
 package mocks
 
 import (
-	users "bookstore-framework/internal/users"
+	users "bookstore-framework/internal"
 	context "context"
 	reflect "reflect"
 

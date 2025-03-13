@@ -5,7 +5,7 @@
 package mocks
 
 import (
-	dto "bookstore-framework/internal/users/api/dto"
+	dto "bookstore-framework/internal/api/dto"
 	context "context"
 	reflect "reflect"
 

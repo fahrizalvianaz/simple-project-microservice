@@ -1,8 +1,8 @@
 package service_test
 
 import (
-	"bookstore-framework/internal/users"
-	"bookstore-framework/internal/users/api/dto"
+	users "bookstore-framework/internal"
+	"bookstore-framework/internal/api/dto"
 	mocks "bookstore-framework/test/mock"
 	"context"
 	"errors"

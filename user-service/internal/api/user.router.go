@@ -1,7 +1,7 @@
 package api
 
 import (
-	"bookstore-framework/internal/users"
+	users "bookstore-framework/internal"
 	"bookstore-framework/middleware"
 	"bookstore-framework/pkg"
 

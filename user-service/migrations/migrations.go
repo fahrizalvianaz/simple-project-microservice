@@ -1,7 +1,7 @@
 package migrations
 
 import (
-	"bookstore-framework/internal/users"
+	model "bookstore-framework/internal"
 	"fmt"
 	"log"
 
@@ -11,10 +11,10 @@ import (
 func Migrate(db *gorm.DB) error {
 	log.Println("Running database migrations...")
 	err := db.AutoMigrate(
-		&users.User{},
+		&model.User{},
 	)
 	if err != nil {
-		return fmt.Errorf("Failed to run migrations: %w", err)
+		return fmt.Errorf("failed to run migrations: %w", err)
 	}
 
 	log.Println("Database migrations completed successfully")

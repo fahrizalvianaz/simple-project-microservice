@@ -1,7 +1,7 @@
 package repository_test
 
 import (
-	"bookstore-framework/internal/users"
+	users "bookstore-framework/internal"
 	"context"
 	"errors"
 	"regexp"

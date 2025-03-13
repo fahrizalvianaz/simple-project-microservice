@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 
+	genericResponse "github.com/fahrizalvianaz/shared-response/httputil"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 )
@@ -18,14 +19,14 @@ func JWTAuth() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		authHeader := ctx.GetHeader("Authorization")
 		if authHeader == "" {
-			pkg.UnauthorizedResponse(ctx)
+			genericResponse.UnauthorizedResponse(ctx)
 			ctx.Abort()
 			return
 		}
 
 		parts := strings.SplitN(authHeader, " ", 2)
 		if !(len(parts) == 2 && parts[0] == "Bearer") {
-			pkg.ErrorResponse(ctx, http.StatusUnauthorized, "invalid authorization format", nil)
+			genericResponse.ErrorResponse(ctx, http.StatusUnauthorized, "invalid authorization format", nil)
 			ctx.Abort()
 			return
 		}
@@ -44,7 +45,7 @@ func JWTAuth() gin.HandlerFunc {
 		)
 
 		if err != nil {
-			pkg.ErrorResponse(ctx, http.StatusUnauthorized, "invalid or expired token", err.Error())
+			genericResponse.ErrorResponse(ctx, http.StatusUnauthorized, "invalid or expired token", err.Error())
 			ctx.Abort()
 			return
 		}
@@ -55,7 +56,7 @@ func JWTAuth() gin.HandlerFunc {
 			ctx.Set("email", claims.Email)
 			ctx.Next()
 		} else {
-			pkg.UnauthorizedResponse(ctx)
+			genericResponse.UnauthorizedResponse(ctx)
 			ctx.Abort()
 			return
 		}
