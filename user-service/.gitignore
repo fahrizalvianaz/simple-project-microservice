@@ -1,0 +1,27 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go specific
+/vendor/
+/Godeps/
+
+# Environment files - ignore .env but keep .env.example
+.env
+.env.local
+
+# Output of the go coverage tool
+*.coverprofile
+coverage.txt
+cover.out
+
+# Log files
+*.log
+logs/
+log/
+
