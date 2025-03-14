@@ -2,9 +2,10 @@ package users
 
 import (
 	"bookstore-framework/internal/api/dto"
-	"bookstore-framework/pkg"
 	"context"
 	"errors"
+
+	pkg "github.com/fahrizalvianaz/shared-middleware"
 
 	"golang.org/x/crypto/bcrypt"
 )

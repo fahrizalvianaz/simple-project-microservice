@@ -2,8 +2,9 @@ package api
 
 import (
 	users "bookstore-framework/internal"
-	"bookstore-framework/middleware"
-	"bookstore-framework/pkg"
+
+	pkg "github.com/fahrizalvianaz/shared-middleware"
+	"github.com/fahrizalvianaz/shared-middleware/middleware"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

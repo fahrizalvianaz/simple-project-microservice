@@ -1,11 +1,12 @@
 package main
 
 import (
-	"bookstore-framework/configs"
 	"bookstore-framework/migrations"
 	"bookstore-framework/pkg"
 	"bookstore-framework/routes"
 	"log"
+
+	configs "github.com/fahrizalvianaz/shared-configuration/configs"
 
 	_ "bookstore-framework/docs"
 

@@ -1,9 +1,10 @@
 package pkg
 
 import (
-	"bookstore-framework/configs"
 	"fmt"
 	"time"
+
+	configs "github.com/fahrizalvianaz/shared-configuration/configs"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
