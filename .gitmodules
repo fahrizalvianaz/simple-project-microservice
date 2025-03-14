@@ -4,3 +4,6 @@
 [submodule "shared-configuration"]
 	path = shared-configuration
 	url = https://github.com/fahrizalvianaz/shared-configuration.git
+[submodule "shared-response"]
+	path = shared-response
+	url = https://github.com/fahrizalvianaz/shared-response.git
