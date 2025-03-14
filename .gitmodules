@@ -1,0 +1,6 @@
+[submodule "shared-middleware"]
+	path = shared-middleware
+	url = https://github.com/fahrizalvianaz/shared-middleware.git
+[submodule "shared-configuration"]
+	path = shared-configuration
+	url = https://github.com/fahrizalvianaz/shared-configuration.git
