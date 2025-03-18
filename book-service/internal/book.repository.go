@@ -8,6 +8,7 @@ import (
 
 type BookRepository interface {
 	Create(ctx context.Context, book *Book) (*Book, error)
+	FindByID(ctx context.Context, id uint) (*Book, error)
 }
 
 type bookRepository struct {
@@ -26,4 +27,13 @@ func (b *bookRepository) Create(ctx context.Context, book *Book) (*Book, error) 
 		return nil, result.Error
 	}
 	return book, nil
+}
+
+func (b *bookRepository) FindByID(ctx context.Context, id uint) (*Book, error) {
+	var book Book
+	result := b.db.WithContext(ctx).First(&book, id)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+	return &book, nil
 }

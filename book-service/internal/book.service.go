@@ -8,6 +8,7 @@ import (
 
 type BookService interface {
 	Create(ctx context.Context, request dto.CreateRequest) (*dto.CreateResponse, error)
+	FindByID(ctx context.Context, id uint) (*Book, error)
 }
 
 type bookService struct {
@@ -46,4 +47,20 @@ func (b *bookService) Create(ctx context.Context, request dto.CreateRequest) (*d
 	}
 
 	return response, nil
+}
+
+func (b *bookService) FindByID(ctx context.Context, id uint) (*Book, error) {
+	result, err := b.bookRepository.FindByID(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+	book := &Book{
+		ID:          result.ID,
+		Title:       result.Title,
+		Author:      result.Author,
+		Description: result.Description,
+		Price:       result.Price,
+		Stock:       result.Stock,
+	}
+	return book, nil
 }

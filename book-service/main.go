@@ -25,6 +25,7 @@ func main() {
 	}
 
 	router := routes.Router(db)
+	router.SetTrustedProxies(nil)
 
 	router.Run(":8080")
 }

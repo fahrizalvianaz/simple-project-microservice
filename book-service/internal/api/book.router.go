@@ -13,5 +13,6 @@ func BookRoutes(router *gin.RouterGroup, db *gorm.DB) {
 	bookHandler := NewBookHandler(bookService)
 
 	router.POST("/add", bookHandler.Create)
+	router.GET("/:id", bookHandler.FindByID)
 
 }
